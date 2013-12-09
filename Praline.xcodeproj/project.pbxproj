@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1ABBF4AB15DD47E8938E06D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98CF4531F9294A449EA11E3D /* libPods.a */; };
+		780DF05F1855DA3A009EDF9F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780DF05E1855DA3A009EDF9F /* Cocoa.framework */; };
+		780DF0691855DA3A009EDF9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 780DF0671855DA3A009EDF9F /* InfoPlist.strings */; };
+		780DF06B1855DA3A009EDF9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF06A1855DA3A009EDF9F /* main.m */; };
+		780DF06F1855DA3A009EDF9F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 780DF06D1855DA3A009EDF9F /* Credits.rtf */; };
+		780DF0721855DA3A009EDF9F /* YGDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF0711855DA3A009EDF9F /* YGDocument.m */; };
+		780DF0781855DA3B009EDF9F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780DF0761855DA3B009EDF9F /* MainMenu.xib */; };
+		780DF07A1855DA3B009EDF9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 780DF0791855DA3B009EDF9F /* Images.xcassets */; };
+		780DF0811855DA3B009EDF9F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780DF0801855DA3B009EDF9F /* XCTest.framework */; };
+		780DF0821855DA3B009EDF9F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780DF05E1855DA3A009EDF9F /* Cocoa.framework */; };
+		780DF08A1855DA3B009EDF9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 780DF0881855DA3B009EDF9F /* InfoPlist.strings */; };
+		780DF08C1855DA3B009EDF9F /* PralineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF08B1855DA3B009EDF9F /* PralineTests.m */; };
+		780DF0981855EEE9009EDF9F /* YGGutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF0971855EEE9009EDF9F /* YGGutterView.m */; };
+		780DF09D1855F0DA009EDF9F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 780DF09C1855F0DA009EDF9F /* Podfile */; };
+		780DF0A01855F1EA009EDF9F /* YGSourceCodeEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF09F1855F1EA009EDF9F /* YGSourceCodeEditorView.m */; };
+		780DF0A9185609A4009EDF9F /* YGSourceCodeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF0A8185609A4009EDF9F /* YGSourceCodeWindowController.m */; };
+		780DF0AD1856184A009EDF9F /* YGSourceCodeEditorView+TextViewBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF0AC1856184A009EDF9F /* YGSourceCodeEditorView+TextViewBlocks.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		780DF0831855DA3B009EDF9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 780DF0531855DA3A009EDF9F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 780DF05A1855DA3A009EDF9F;
+			remoteInfo = Praline;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5FF8E3A2D87240F1A0CD76F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		780DF05B1855DA3A009EDF9F /* Praline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Praline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		780DF05E1855DA3A009EDF9F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		780DF0611855DA3A009EDF9F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		780DF0621855DA3A009EDF9F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		780DF0631855DA3A009EDF9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		780DF0661855DA3A009EDF9F /* Praline-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Praline-Info.plist"; sourceTree = "<group>"; };
+		780DF0681855DA3A009EDF9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		780DF06A1855DA3A009EDF9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		780DF06C1855DA3A009EDF9F /* Praline-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Praline-Prefix.pch"; sourceTree = "<group>"; };
+		780DF06E1855DA3A009EDF9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		780DF0701855DA3A009EDF9F /* YGDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YGDocument.h; sourceTree = "<group>"; };
+		780DF0711855DA3A009EDF9F /* YGDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YGDocument.m; sourceTree = "<group>"; };
+		780DF0771855DA3B009EDF9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		780DF0791855DA3B009EDF9F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		780DF07F1855DA3B009EDF9F /* PralineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PralineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		780DF0801855DA3B009EDF9F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		780DF0871855DA3B009EDF9F /* PralineTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PralineTests-Info.plist"; sourceTree = "<group>"; };
+		780DF0891855DA3B009EDF9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		780DF08B1855DA3B009EDF9F /* PralineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PralineTests.m; sourceTree = "<group>"; };
+		780DF0961855EEE9009EDF9F /* YGGutterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGGutterView.h; sourceTree = "<group>"; };
+		780DF0971855EEE9009EDF9F /* YGGutterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGGutterView.m; sourceTree = "<group>"; };
+		780DF09C1855F0DA009EDF9F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		780DF09E1855F1EA009EDF9F /* YGSourceCodeEditorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGSourceCodeEditorView.h; sourceTree = "<group>"; };
+		780DF09F1855F1EA009EDF9F /* YGSourceCodeEditorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGSourceCodeEditorView.m; sourceTree = "<group>"; };
+		780DF0A7185609A4009EDF9F /* YGSourceCodeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGSourceCodeWindowController.h; sourceTree = "<group>"; };
+		780DF0A8185609A4009EDF9F /* YGSourceCodeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGSourceCodeWindowController.m; sourceTree = "<group>"; };
+		780DF0AB1856184A009EDF9F /* YGSourceCodeEditorView+TextViewBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YGSourceCodeEditorView+TextViewBlocks.h"; sourceTree = "<group>"; };
+		780DF0AC1856184A009EDF9F /* YGSourceCodeEditorView+TextViewBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YGSourceCodeEditorView+TextViewBlocks.m"; sourceTree = "<group>"; };
+		98CF4531F9294A449EA11E3D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		780DF0581855DA3A009EDF9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				780DF05F1855DA3A009EDF9F /* Cocoa.framework in Frameworks */,
+				1ABBF4AB15DD47E8938E06D4 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		780DF07C1855DA3B009EDF9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				780DF0821855DA3B009EDF9F /* Cocoa.framework in Frameworks */,
+				780DF0811855DA3B009EDF9F /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		780DF0521855DA3A009EDF9F = {
+			isa = PBXGroup;
+			children = (
+				780DF09C1855F0DA009EDF9F /* Podfile */,
+				780DF0641855DA3A009EDF9F /* Praline */,
+				780DF0851855DA3B009EDF9F /* PralineTests */,
+				780DF05D1855DA3A009EDF9F /* Frameworks */,
+				780DF05C1855DA3A009EDF9F /* Products */,
+				5FF8E3A2D87240F1A0CD76F3 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		780DF05C1855DA3A009EDF9F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				780DF05B1855DA3A009EDF9F /* Praline.app */,
+				780DF07F1855DA3B009EDF9F /* PralineTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		780DF05D1855DA3A009EDF9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				780DF05E1855DA3A009EDF9F /* Cocoa.framework */,
+				780DF0801855DA3B009EDF9F /* XCTest.framework */,
+				780DF0601855DA3A009EDF9F /* Other Frameworks */,
+				98CF4531F9294A449EA11E3D /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		780DF0601855DA3A009EDF9F /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				780DF0611855DA3A009EDF9F /* AppKit.framework */,
+				780DF0621855DA3A009EDF9F /* CoreData.framework */,
+				780DF0631855DA3A009EDF9F /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		780DF0641855DA3A009EDF9F /* Praline */ = {
+			isa = PBXGroup;
+			children = (
+				780DF0951855EECC009EDF9F /* Views */,
+				780DF0701855DA3A009EDF9F /* YGDocument.h */,
+				780DF0711855DA3A009EDF9F /* YGDocument.m */,
+				780DF0761855DA3B009EDF9F /* MainMenu.xib */,
+				780DF0791855DA3B009EDF9F /* Images.xcassets */,
+				780DF0651855DA3A009EDF9F /* Supporting Files */,
+			);
+			path = Praline;
+			sourceTree = "<group>";
+		};
+		780DF0651855DA3A009EDF9F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				780DF0661855DA3A009EDF9F /* Praline-Info.plist */,
+				780DF0671855DA3A009EDF9F /* InfoPlist.strings */,
+				780DF06A1855DA3A009EDF9F /* main.m */,
+				780DF06C1855DA3A009EDF9F /* Praline-Prefix.pch */,
+				780DF06D1855DA3A009EDF9F /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		780DF0851855DA3B009EDF9F /* PralineTests */ = {
+			isa = PBXGroup;
+			children = (
+				780DF08B1855DA3B009EDF9F /* PralineTests.m */,
+				780DF0861855DA3B009EDF9F /* Supporting Files */,
+			);
+			path = PralineTests;
+			sourceTree = "<group>";
+		};
+		780DF0861855DA3B009EDF9F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				780DF0871855DA3B009EDF9F /* PralineTests-Info.plist */,
+				780DF0881855DA3B009EDF9F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		780DF0951855EECC009EDF9F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				780DF0AA18561821009EDF9F /* YGSouceCodeEditor */,
+				780DF0A7185609A4009EDF9F /* YGSourceCodeWindowController.h */,
+				780DF0A8185609A4009EDF9F /* YGSourceCodeWindowController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		780DF0AA18561821009EDF9F /* YGSouceCodeEditor */ = {
+			isa = PBXGroup;
+			children = (
+				780DF0961855EEE9009EDF9F /* YGGutterView.h */,
+				780DF0971855EEE9009EDF9F /* YGGutterView.m */,
+				780DF09E1855F1EA009EDF9F /* YGSourceCodeEditorView.h */,
+				780DF09F1855F1EA009EDF9F /* YGSourceCodeEditorView.m */,
+				780DF0AB1856184A009EDF9F /* YGSourceCodeEditorView+TextViewBlocks.h */,
+				780DF0AC1856184A009EDF9F /* YGSourceCodeEditorView+TextViewBlocks.m */,
+			);
+			name = YGSouceCodeEditor;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		780DF05A1855DA3A009EDF9F /* Praline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 780DF08F1855DA3B009EDF9F /* Build configuration list for PBXNativeTarget "Praline" */;
+			buildPhases = (
+				3CCE7E21B4C0488BA3F41E71 /* Check Pods Manifest.lock */,
+				780DF0571855DA3A009EDF9F /* Sources */,
+				780DF0581855DA3A009EDF9F /* Frameworks */,
+				780DF0591855DA3A009EDF9F /* Resources */,
+				22A00B97D5084C8BBD2883A7 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Praline;
+			productName = Praline;
+			productReference = 780DF05B1855DA3A009EDF9F /* Praline.app */;
+			productType = "com.apple.product-type.application";
+		};
+		780DF07E1855DA3B009EDF9F /* PralineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 780DF0921855DA3B009EDF9F /* Build configuration list for PBXNativeTarget "PralineTests" */;
+			buildPhases = (
+				780DF07B1855DA3B009EDF9F /* Sources */,
+				780DF07C1855DA3B009EDF9F /* Frameworks */,
+				780DF07D1855DA3B009EDF9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				780DF0841855DA3B009EDF9F /* PBXTargetDependency */,
+			);
+			name = PralineTests;
+			productName = PralineTests;
+			productReference = 780DF07F1855DA3B009EDF9F /* PralineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		780DF0531855DA3A009EDF9F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = YG;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = YaGeek;
+				TargetAttributes = {
+					780DF07E1855DA3B009EDF9F = {
+						TestTargetID = 780DF05A1855DA3A009EDF9F;
+					};
+				};
+			};
+			buildConfigurationList = 780DF0561855DA3A009EDF9F /* Build configuration list for PBXProject "Praline" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 780DF0521855DA3A009EDF9F;
+			productRefGroup = 780DF05C1855DA3A009EDF9F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				780DF05A1855DA3A009EDF9F /* Praline */,
+				780DF07E1855DA3B009EDF9F /* PralineTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		780DF0591855DA3A009EDF9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				780DF09D1855F0DA009EDF9F /* Podfile in Resources */,
+				780DF0691855DA3A009EDF9F /* InfoPlist.strings in Resources */,
+				780DF07A1855DA3B009EDF9F /* Images.xcassets in Resources */,
+				780DF06F1855DA3A009EDF9F /* Credits.rtf in Resources */,
+				780DF0781855DA3B009EDF9F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		780DF07D1855DA3B009EDF9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				780DF08A1855DA3B009EDF9F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22A00B97D5084C8BBD2883A7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CCE7E21B4C0488BA3F41E71 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		780DF0571855DA3A009EDF9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				780DF0981855EEE9009EDF9F /* YGGutterView.m in Sources */,
+				780DF0A9185609A4009EDF9F /* YGSourceCodeWindowController.m in Sources */,
+				780DF0A01855F1EA009EDF9F /* YGSourceCodeEditorView.m in Sources */,
+				780DF0AD1856184A009EDF9F /* YGSourceCodeEditorView+TextViewBlocks.m in Sources */,
+				780DF0721855DA3A009EDF9F /* YGDocument.m in Sources */,
+				780DF06B1855DA3A009EDF9F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		780DF07B1855DA3B009EDF9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				780DF08C1855DA3B009EDF9F /* PralineTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		780DF0841855DA3B009EDF9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 780DF05A1855DA3A009EDF9F /* Praline */;
+			targetProxy = 780DF0831855DA3B009EDF9F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		780DF0671855DA3A009EDF9F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				780DF0681855DA3A009EDF9F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		780DF06D1855DA3A009EDF9F /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				780DF06E1855DA3A009EDF9F /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		780DF0761855DA3B009EDF9F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				780DF0771855DA3B009EDF9F /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		780DF0881855DA3B009EDF9F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				780DF0891855DA3B009EDF9F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		780DF08D1855DA3B009EDF9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		780DF08E1855DA3B009EDF9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		780DF0901855DA3B009EDF9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FF8E3A2D87240F1A0CD76F3 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Praline/Praline-Prefix.pch";
+				INFOPLIST_FILE = "Praline/Praline-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		780DF0911855DA3B009EDF9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FF8E3A2D87240F1A0CD76F3 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Praline/Praline-Prefix.pch";
+				INFOPLIST_FILE = "Praline/Praline-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		780DF0931855DA3B009EDF9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Praline.app/Contents/MacOS/Praline";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Praline/Praline-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PralineTests/PralineTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		780DF0941855DA3B009EDF9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Praline.app/Contents/MacOS/Praline";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Praline/Praline-Prefix.pch";
+				INFOPLIST_FILE = "PralineTests/PralineTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		780DF0561855DA3A009EDF9F /* Build configuration list for PBXProject "Praline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				780DF08D1855DA3B009EDF9F /* Debug */,
+				780DF08E1855DA3B009EDF9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		780DF08F1855DA3B009EDF9F /* Build configuration list for PBXNativeTarget "Praline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				780DF0901855DA3B009EDF9F /* Debug */,
+				780DF0911855DA3B009EDF9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		780DF0921855DA3B009EDF9F /* Build configuration list for PBXNativeTarget "PralineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				780DF0931855DA3B009EDF9F /* Debug */,
+				780DF0941855DA3B009EDF9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 780DF0531855DA3A009EDF9F /* Project object */;
+}
