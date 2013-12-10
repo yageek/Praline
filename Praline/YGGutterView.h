@@ -10,7 +10,8 @@
 
 @interface YGGutterView : NSView
 
+- (id) initWithFrame:(NSRect) frame andScrollView:(NSScrollView*) textview;
 
-@property(strong,nonatomic) NSArray * lineFragmentRectsArray;
-@property(strong,nonatomic) NSDictionary * textAttributes;
+@property(copy,nonatomic) NSDictionary * textAttributes;
+@property(assign,nonatomic) NSScrollView * textScrollView;
 @end

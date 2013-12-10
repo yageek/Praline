@@ -7,22 +7,39 @@
 //
 
 #import "YGGutterView.h"
+#import <CocoaLumberjack/DDLog.h>
+
+typedef NS_ENUM(NSInteger,YGGutterLineMode)
+{
+    YGGutterLineModeNewLine,
+    YGGutterLineModeWrapping
+};
+
+static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation YGGutterView
 
-- (id)initWithFrame:(NSRect)frame
+- (id) initWithFrame:(NSRect) frame andScrollView:(NSScrollView*) scrollview
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-        self.textAttributes = @{
+    
+    if(![scrollview.documentView isKindOfClass:[NSTextView class]])
+    {
+        self = nil;
+        DDLogError(@"Could not Initialize. The provided scrollView should have an NSTextView as document view.");
+        return self;
+    }
+    if(self = [super initWithFrame:frame])
+    {
+        _textAttributes = [@{
                                 NSFontAttributeName: [NSFont userFixedPitchFontOfSize:10.5],
                                 NSForegroundColorAttributeName : [NSColor colorWithRed:0.57 green:0.57 blue:0.57 alpha:1.0]
-                                };
+                                } copy];
+       _textScrollView = scrollview;
         
     }
     return self;
 }
+
 - (BOOL) isFlipped
 {
     return YES;
@@ -32,26 +49,65 @@
     [[NSColor colorWithRed:0.24 green:0.25 blue:0.29 alpha:1.0] setFill];
     NSRectFill(dirtyRect);
     
-    NSInteger totalLines = self.lineFragmentRectsArray.count;
-    NSUInteger index;
-    for(index = 0; index < totalLines; ++index)
+    NSTextView * textView = _textScrollView.documentView;
+    
+    NSString * code = textView.string;
+    NSLayoutManager * lytManager = textView.layoutManager;
+    
+    NSRect boundingRect = _textScrollView.contentView.documentVisibleRect;
+    CGFloat scrollY = boundingRect.origin.y;
+    
+    YGGutterLineMode previousMode = YGGutterLineModeNewLine;
+    YGGutterLineMode currentMode;
+    
+    NSInteger index,numberoflines, numberOfGlyphs = [lytManager numberOfGlyphs];
+    NSRange loopRange;
+    for(numberoflines = 1, index =0 ; index < numberOfGlyphs;)
     {
-        @autoreleasepool
+        NSRect lineRect = [lytManager lineFragmentRectForGlyphAtIndex:index effectiveRange:&loopRange withoutAdditionalLayout:YES];
+        
+        NSString * line = [code substringWithRange:loopRange];
+        
+        if([line rangeOfString:@"\n"].location == NSNotFound)
         {
-            NSRect lineRect = [self.lineFragmentRectsArray[index] rectValue];
-            NSString * numberString = [@(index+1) stringValue];
-            NSAttributedString * __autoreleasing string = [[NSAttributedString alloc] initWithString:numberString attributes:self.textAttributes];
-            
-            CGFloat originX = self.frame.size.width - string.size.width - 5;
-            
-            CGFloat delta = ABS(string.size.height-lineRect.size.height);
-            
-            CGFloat originY = lineRect.origin.y - delta/2 ;
-            [string drawAtPoint:NSMakePoint(originX, originY)];
+            currentMode = YGGutterLineModeWrapping;
+        }
+        else
+        {
+            currentMode = YGGutterLineModeNewLine;
         }
         
+        NSString * currentLine = nil;
         
+        if((previousMode == YGGutterLineModeNewLine && currentMode == YGGutterLineModeWrapping) || (previousMode == YGGutterLineModeNewLine && currentMode == YGGutterLineModeNewLine))
+        {
+            currentLine = [NSString stringWithFormat:@"%lu", numberoflines];
+            numberoflines++;
+        }
+        else if((previousMode == YGGutterLineModeWrapping && currentMode == YGGutterLineModeNewLine) || (previousMode == YGGutterLineModeWrapping && currentMode == YGGutterLineModeWrapping))
+        {
+            currentLine = @".";
+        }
+        
+        previousMode = currentMode;
+        
+        //Draw
+        NSRect documentRect = [_textScrollView documentVisibleRect];
+        if(NSIntersectsRect(documentRect, lineRect))
+        {
+            NSAttributedString * __autoreleasing string = [[NSAttributedString alloc] initWithString:currentLine attributes:self.textAttributes];
+            
+            NSPoint originPoint = lineRect.origin;
+            originPoint.y -= scrollY;
+            
+            [string drawAtPoint:originPoint];
+            
+        }
+        
+        index  = NSMaxRange(loopRange);
     }
+    
 }
+
 
 @end

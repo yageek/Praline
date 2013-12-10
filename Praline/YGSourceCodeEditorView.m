@@ -14,7 +14,7 @@
 
 static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
-#import "YGSourceCodeEditorView+TextViewBlocks.h"
+
 #define GUTTER_VIEW_WIDTH 30
 
 
@@ -43,7 +43,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void) createViewWithMainFrame:(NSRect) frame
 {
    
-    _gutterView = [[YGGutterView alloc] initWithFrame:frame];
+   
     _textScrollView = [[NSScrollView alloc] initWithFrame:frame];
 
     [_textScrollView setHasVerticalScroller:YES];
@@ -57,7 +57,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     [_textScrollView setDocumentView:_textView];
     
-    
+     _gutterView = [[YGGutterView alloc] initWithFrame:frame andScrollView:_textScrollView];
     
     [self addSubview:_gutterView];
     [self addSubview:_textScrollView];
@@ -116,17 +116,21 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 #pragma mark - Notifications
 - (void) registerNotifications
 {
-    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(updateLineNumbers) name:NSTextDidChangeNotification object:_textView];
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(updateGutter) name:NSTextDidChangeNotification object:_textView];
     
     [_textScrollView.contentView setPostsBoundsChangedNotifications:YES];
     
-    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(updateLineNumbers) name:NSViewBoundsDidChangeNotification object:_textScrollView.contentView];
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(updateGutter) name:NSViewBoundsDidChangeNotification object:_textScrollView.contentView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateLineNumbers)
+                                             selector:@selector(updateGutter)
                                                  name:NSWindowDidResizeNotification
                                                object:self.window];
     
 }
 
+- (void) updateGutter
+{
+    [_gutterView setNeedsDisplay:YES];
+}
 @end

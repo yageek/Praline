@@ -13,8 +13,6 @@
     NSTextView * _textView;
     NSScrollView * _textScrollView;
     YGGutterView * _gutterView;
-    
-    
 }
 
 @end
