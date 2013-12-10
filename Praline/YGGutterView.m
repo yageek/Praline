@@ -30,12 +30,14 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
     if(self = [super initWithFrame:frame])
     {
-        _textAttributes = [@{
-                                NSFontAttributeName: [NSFont userFixedPitchFontOfSize:10.5],
-                                NSForegroundColorAttributeName : [NSColor colorWithRed:0.57 green:0.57 blue:0.57 alpha:1.0]
-                                } copy];
        _textScrollView = scrollview;
-        
+
+        NSFont * font = [scrollview.documentView font];
+       _textAttributes = [@{
+                             NSFontAttributeName: font,
+                             NSForegroundColorAttributeName : [NSColor colorWithRed:0.57 green:0.57 blue:0.57 alpha:1.0]
+                             } copy];
+
     }
     return self;
 }
