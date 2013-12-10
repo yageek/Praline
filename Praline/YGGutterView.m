@@ -51,12 +51,23 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     NSTextView * textView = _textScrollView.documentView;
     
+    if(textView.string.length == 0) //Maintain first line if empty
+    {
+        DDLogVerbose(@"No text should maintain first line");
+        
+        NSAttributedString * __autoreleasing string = [[NSAttributedString alloc] initWithString:@"1" attributes:self.textAttributes];
+        
+        [string drawAtPoint:NSMakePoint(0, 0)];
+        
+        return;
+    }
+    
     NSString * code = textView.string;
     NSLayoutManager * lytManager = textView.layoutManager;
     
     NSRect boundingRect = _textScrollView.contentView.documentVisibleRect;
     CGFloat scrollY = boundingRect.origin.y;
-    
+    CGFloat maxY = -1;
     YGGutterLineMode previousMode = YGGutterLineModeNewLine;
     YGGutterLineMode currentMode;
     
@@ -65,7 +76,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     for(numberoflines = 1, index =0 ; index < numberOfGlyphs;)
     {
         NSRect lineRect = [lytManager lineFragmentRectForGlyphAtIndex:index effectiveRange:&loopRange withoutAdditionalLayout:YES];
-        
+        maxY = MAX(maxY,lineRect.origin.y);
         NSString * line = [code substringWithRange:loopRange];
         
         if([line rangeOfString:@"\n"].location == NSNotFound)
@@ -107,6 +118,21 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         index  = NSMaxRange(loopRange);
     }
     
+    NSString *lastCharacter = [textView.string substringFromIndex:textView.string.length-1];
+    if([lastCharacter isEqualToString:@"\n"])
+    {
+        DDLogVerbose(@"Should maintain last line");
+        NSString * currentLine = [NSString stringWithFormat:@"%lu", numberoflines];
+        
+        NSAttributedString * __autoreleasing string = [[NSAttributedString alloc] initWithString:currentLine attributes:self.textAttributes];
+        
+        CGFloat lineHeight = [string size].height - 1; //Soustract -1 due to 0 origin
+        NSPoint originPoint = NSMakePoint(0, maxY+lineHeight);
+        originPoint.y -= scrollY;
+        
+        [string drawAtPoint:originPoint];
+    }
+
 }
 
 
