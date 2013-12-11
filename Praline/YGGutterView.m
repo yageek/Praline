@@ -111,7 +111,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
             NSAttributedString * __autoreleasing string = [[NSAttributedString alloc] initWithString:currentLine attributes:self.textAttributes];
             
             NSPoint originPoint = lineRect.origin;
-            originPoint.y -= scrollY;
+            originPoint.y =NSMidY(lineRect) - string.size.height/2 - scrollY;
             
             [string drawAtPoint:originPoint];
             
