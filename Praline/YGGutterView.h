@@ -8,6 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+
+@interface YGGutterLine : NSObject
+{
+@public
+    NSRect lineRect;
+    NSInteger number;
+}
+
+@end
+
 @interface YGGutterView : NSView
 
 - (id) initWithFrame:(NSRect) frame andScrollView:(NSScrollView*) textview;

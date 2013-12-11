@@ -53,9 +53,21 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     _textView.autoresizingMask = NSViewWidthSizable;
     _textView.backgroundColor = [NSColor colorWithRed:0.16 green:0.17 blue:0.21 alpha:1.0];
     _textView.textColor = [NSColor whiteColor];
-    [_textView setInsertionPointColor:[NSColor whiteColor]];    
     
-    [_textView setFont:[NSFont fontWithName:@"Menlo" size:11.]];
+    [_textView setInsertionPointColor:[NSColor whiteColor]];
+    
+    NSFont * defaultFont =[NSFont fontWithName:@"Menlo" size:11.];
+    [_textView setFont:defaultFont];
+    
+    
+    NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    
+    [style setLineSpacing:2.0];
+    [_textView setDefaultParagraphStyle:[style copy]];
+
+    [_textView setString:@"ssss"];
+    [_textView setString:@""];
+    
     [_textScrollView setDocumentView:_textView];
     
     
