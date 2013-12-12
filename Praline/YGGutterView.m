@@ -124,7 +124,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     NSInteger index, numberofLines, totalGlyphs = [manager numberOfGlyphs];
     NSRange loopRange;
-    
+
     YGGutterLineMode currentMode, previousMode =YGGutterLineModeNewLine;
     
     for(numberofLines = 0, index = 0; index < totalGlyphs;)

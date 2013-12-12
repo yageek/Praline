@@ -14,8 +14,9 @@
 
 #define GUTTER_VIEW_WIDTH 30
 
+static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
-@interface YGSourceCodeEditorView ()
+@interface YGSourceCodeEditorView ()<NSTextStorageDelegate>
 
 + (NSOperationQueue *) globalEditingQueue;
 
@@ -50,7 +51,7 @@
     _textView.autoresizingMask = NSViewWidthSizable;
     _textView.backgroundColor = [NSColor colorWithRed:0.16 green:0.17 blue:0.21 alpha:1.0];
     _textView.textColor = [NSColor whiteColor];
-    
+    [_textView setRichText:NO];
     [_textView setInsertionPointColor:[NSColor whiteColor]];
     
     NSFont * defaultFont =[NSFont fontWithName:@"Source Code Pro" size:13.];
@@ -64,6 +65,7 @@
 
     [_textView setString:@"ssss"];
     [_textView setString:@""];
+    _textView.textStorage.delegate = self;
     
     [_textScrollView setDocumentView:_textView];
     
@@ -128,8 +130,6 @@
 #pragma mark - Notifications
 - (void) registerNotifications
 {
-    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(updateGutter) name:NSTextDidChangeNotification object:_textView];
-    
     [_textScrollView.contentView setPostsBoundsChangedNotifications:YES];
     
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(updateGutter) name:NSViewBoundsDidChangeNotification object:_textScrollView.contentView];
@@ -141,11 +141,47 @@
     
 }
 
+#pragma mark - delegate
+
+
+- (void)textStorageDidProcessEditing:(NSNotification *)notification
+{
+    [self updateGutter];
+    
+    
+    /* Syntax highlighing*/
+    NSTextStorage *textStorage = [notification object] ;
+    NSColor *blue = [NSColor blueColor];
+    NSString *string = [textStorage string];
+    if(string.length == 0)
+        return;
+  
+    NSLayoutManager * lytManager = _textView.layoutManager;
+    
+    NSRect  visibleRect = _textScrollView.documentVisibleRect;
+    
+   NSRange visibleGlyphs =  [lytManager glyphRangeForBoundingRect:visibleRect inTextContainer:_textView.textContainer];
+    
+    visibleGlyphs.length = MIN(visibleGlyphs.length,string.length);
+    
+    [string enumerateSubstringsInRange:visibleGlyphs options:NSStringEnumerationByWords usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop){
+        
+        
+        if([substring isEqualToString:@"Mike"])
+        {
+            [textStorage addAttribute:NSForegroundColorAttributeName
+                                value:blue
+                                range:substringRange];
+        }
+    }];
+    
+
+}
+
 - (void) updateGutter
 {
     [_gutterView setNeedsDisplay:YES];
 }
-
 - (void) setText:(NSString*) text
 {
     _textView.string = text;
