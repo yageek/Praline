@@ -147,35 +147,6 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)textStorageDidProcessEditing:(NSNotification *)notification
 {
     [self updateGutter];
-    
-    
-    /* Syntax highlighing*/
-    NSTextStorage *textStorage = [notification object] ;
-    NSColor *blue = [NSColor blueColor];
-    NSString *string = [textStorage string];
-    if(string.length == 0)
-        return;
-  
-    NSLayoutManager * lytManager = _textView.layoutManager;
-    
-    NSRect  visibleRect = _textScrollView.documentVisibleRect;
-    
-   NSRange visibleGlyphs =  [lytManager glyphRangeForBoundingRect:visibleRect inTextContainer:_textView.textContainer];
-    
-    visibleGlyphs.length = MIN(visibleGlyphs.length,string.length);
-    
-    [string enumerateSubstringsInRange:visibleGlyphs options:NSStringEnumerationByWords usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop){
-        
-        
-        if([substring isEqualToString:@"Mike"])
-        {
-            [textStorage addAttribute:NSForegroundColorAttributeName
-                                value:blue
-                                range:substringRange];
-        }
-    }];
-    
-
 }
 
 - (void) updateGutter

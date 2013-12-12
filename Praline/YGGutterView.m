@@ -94,6 +94,16 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
                  [string drawInRect:lineRect];
                 
+//                [[NSColor redColor] setStroke];
+//                NSBezierPath * path = [NSBezierPath bezierPath];
+//                [path moveToPoint:NSMakePoint(NSMinX(line->lineRect), NSMinY(line->lineRect))];
+//                [path lineToPoint:NSMakePoint(NSMaxX(line->lineRect), NSMinY(line->lineRect))];
+//                [path lineToPoint:NSMakePoint(NSMaxX(line->lineRect), NSMaxY(line->lineRect))];
+//                [path lineToPoint:NSMakePoint(NSMinX(line->lineRect), NSMaxY(line->lineRect))];
+//                
+//                
+//                [path stroke];
+
             }
         }
     }
@@ -121,19 +131,20 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         return  [linesArray copy];
     }
     
-    
+    CGFloat spacing = rowHeight;
     NSInteger index, numberofLines, totalGlyphs = [manager numberOfGlyphs];
     NSRange loopRange;
-
+    NSInteger iter;
+    
     YGGutterLineMode currentMode, previousMode =YGGutterLineModeNewLine;
     
-    for(numberofLines = 0, index = 0; index < totalGlyphs;)
+    for(iter = 0, numberofLines = 0, index = 0; index < totalGlyphs; iter++)
     {
-        NSRect lineRect = [manager lineFragmentRectForGlyphAtIndex:index effectiveRange:&loopRange];
+        [manager lineFragmentRectForGlyphAtIndex:index effectiveRange:&loopRange];
         NSString * line = [code substringWithRange:loopRange];
         
         YGGutterLine * gtLine = [[YGGutterLine alloc] init];
-        gtLine->lineRect = NSMakeRect(0, lineRect.origin.y, self.bounds.size.width, rowHeight + lineSpacing);
+        gtLine->lineRect = NSMakeRect(0, iter*spacing, self.bounds.size.width, rowHeight + lineSpacing);
         
         if([line rangeOfString:@"\n"].location == NSNotFound)
         {
@@ -163,9 +174,8 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     if([lastCharacter isEqualToString:@"\n"])
     {
         YGGutterLine * line = [[YGGutterLine alloc] init];
-        YGGutterLine * previousLine = linesArray[numberofLines-1];
         
-        CGFloat y = previousLine->lineRect.origin.y + rowHeight + lineSpacing;
+        CGFloat y = iter*spacing;
         
         line->lineRect = NSMakeRect(0, y, self.bounds.size.width, rowHeight + lineSpacing);
         line->number = numberofLines+1;
@@ -173,7 +183,6 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
        [linesArray addObject:line];
         return  [linesArray copy];
     }
-    
     
     
     
