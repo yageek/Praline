@@ -56,7 +56,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     [_textView setInsertionPointColor:[NSColor whiteColor]];
     
-    NSFont * defaultFont =[NSFont fontWithName:@"Menlo" size:11.];
+    NSFont * defaultFont =[NSFont fontWithName:@"Source Code Pro" size:13.];
     [_textView setFont:defaultFont];
     
     

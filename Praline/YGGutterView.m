@@ -42,7 +42,10 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
        _textScrollView = scrollview;
 
         NSFont * font = [scrollview.documentView font];
+        NSMutableParagraphStyle *paragrapStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+        paragrapStyle.alignment = NSCenterTextAlignment;
        _textAttributes = [@{
+                            NSParagraphStyleAttributeName: [paragrapStyle copy],
                              NSFontAttributeName: font,
                              NSForegroundColorAttributeName : [NSColor colorWithRed:0.57 green:0.57 blue:0.57 alpha:1.0]
                              } copy];
@@ -64,11 +67,13 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         NSRectFill(dirtyRect);
         CGFloat scrollY = [_textScrollView.contentView documentVisibleRect].origin.y;
         
+        CGFloat pointSize = [self.textAttributes[NSFontAttributeName] pointSize];
         NSArray * lines = [self getLines];
         
         for(YGGutterLine * line in lines)
         {
-            if(NSIntersectsRect(line->lineRect, _textScrollView.documentVisibleRect))
+            NSRect lineRect = line->lineRect;
+            if(NSIntersectsRect(lineRect, _textScrollView.documentVisibleRect))
             {
                 
                 NSString * label;
@@ -81,10 +86,13 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
                     label = [NSString stringWithFormat:@"%li",line->number];
                 }
                 
-                line->lineRect.origin.y -= scrollY;
+                lineRect.origin.y -= scrollY;
                 
-                 NSAttributedString * __autoreleasing string = [[NSAttributedString alloc] initWithString:label attributes:self.textAttributes];
-                 [string drawInRect:line->lineRect];
+                NSAttributedString * __autoreleasing string = [[NSAttributedString alloc] initWithString:label attributes:self.textAttributes];
+                
+                lineRect.origin.y -= (string.size.height - pointSize)/2;
+
+                 [string drawInRect:lineRect];
                 
             }
         }
@@ -99,14 +107,14 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSLayoutManager * manager = textView.layoutManager;
     NSString * code = textView.string;
 
-    CGFloat rowHeight = [manager defaultLineHeightForFont:self.textAttributes[NSFontAttributeName]];
-    CGFloat lineSpacing = [[textView defaultParagraphStyle] lineSpacing];
-    CGFloat centeringYOffset = -1*(rowHeight - [self.textAttributes[NSFontAttributeName] pointSize]);
+
+    rowHeight = [manager defaultLineHeightForFont:self.textAttributes[NSFontAttributeName]];
+    lineSpacing = [[textView defaultParagraphStyle] lineSpacing];
                                              
     if(code.length == 0)
     {
         YGGutterLine * line = [[YGGutterLine alloc] init];
-        line->lineRect = NSMakeRect(0, centeringYOffset, self.bounds.size.width, [manager defaultLineHeightForFont:self.textAttributes[NSFontAttributeName]] + lineSpacing  );
+        line->lineRect = NSMakeRect(0, 0, self.bounds.size.width, rowHeight + lineSpacing);
         line->number = 1;
     
         [linesArray addObject:line];
@@ -124,10 +132,8 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         NSRect lineRect = [manager lineFragmentRectForGlyphAtIndex:index effectiveRange:&loopRange];
         NSString * line = [code substringWithRange:loopRange];
         
-        lineRect.origin.y += centeringYOffset;
-        
         YGGutterLine * gtLine = [[YGGutterLine alloc] init];
-        gtLine->lineRect = lineRect;
+        gtLine->lineRect = NSMakeRect(0, lineRect.origin.y, self.bounds.size.width, rowHeight + lineSpacing);
         
         if([line rangeOfString:@"\n"].location == NSNotFound)
         {
@@ -158,7 +164,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         YGGutterLine * line = [[YGGutterLine alloc] init];
         YGGutterLine * previousLine = linesArray[numberofLines-1];
         
-        CGFloat y = previousLine->lineRect.origin.y + rowHeight + lineSpacing + 0.5*centeringYOffset;
+        CGFloat y = previousLine->lineRect.origin.y + rowHeight + lineSpacing;
         
         line->lineRect = NSMakeRect(0, y, self.bounds.size.width, rowHeight + lineSpacing);
         line->number = numberofLines+1;

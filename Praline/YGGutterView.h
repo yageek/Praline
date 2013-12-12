@@ -19,6 +19,10 @@
 @end
 
 @interface YGGutterView : NSView
+{
+    CGFloat rowHeight;
+    CGFloat lineSpacing;
+}
 
 - (id) initWithFrame:(NSRect) frame andScrollView:(NSScrollView*) textview;
 
