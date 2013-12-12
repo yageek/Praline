@@ -15,5 +15,6 @@
     YGGutterView * _gutterView;
 }
 
-- (void) setText:(NSString*) text;
+@property(readonly,nonatomic) NSTextView *textView;
+
 @end

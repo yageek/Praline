@@ -58,7 +58,7 @@
 		780DF08B1855DA3B009EDF9F /* PralineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PralineTests.m; sourceTree = "<group>"; };
 		780DF0961855EEE9009EDF9F /* YGGutterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGGutterView.h; sourceTree = "<group>"; };
 		780DF0971855EEE9009EDF9F /* YGGutterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGGutterView.m; sourceTree = "<group>"; };
-		780DF09C1855F0DA009EDF9F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		780DF09C1855F0DA009EDF9F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		780DF09E1855F1EA009EDF9F /* YGSourceCodeEditorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGSourceCodeEditorView.h; sourceTree = "<group>"; };
 		780DF09F1855F1EA009EDF9F /* YGSourceCodeEditorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGSourceCodeEditorView.m; sourceTree = "<group>"; };
 		780DF0A7185609A4009EDF9F /* YGSourceCodeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGSourceCodeWindowController.h; sourceTree = "<group>"; };

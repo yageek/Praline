@@ -11,6 +11,7 @@
 @interface YGDocument : NSDocument
 {
     NSString * code;
+    NSStringEncoding codeEncoding;
 }
 
 @end

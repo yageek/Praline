@@ -17,15 +17,6 @@
 @end
 @implementation YGDocument
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Add your subclass-specific initialization here.
-    }
-    return self;
-}
-
 - (void) makeWindowControllers
 {
    _sourceCodeController = [[YGSourceCodeWindowController alloc] init];
@@ -33,7 +24,7 @@
     
     if(code)
     {
-        [_sourceCodeController.editorView setText:code];
+        _sourceCodeController.editorView.textView.string = [code copy];
     }
 
 }
@@ -53,20 +44,27 @@
 {
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
     // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
-    return nil;
-}
+    code = [_sourceCodeController.editorView.textView.string copy];
 
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
-{
-    // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
-    // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
-    // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    code = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-
+    [_sourceCodeController.editorView.textView breakUndoCoalescing];
     
-    return YES;
+    NSStringEncoding encoding = codeEncoding ?: NSUTF8StringEncoding;
+    
+    NSData * data = [code dataUsingEncoding:encoding];
+    
+    if(!data)
+    {
+        *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileWriteUnknownError userInfo:nil];
+    }
+    
+    return data;
 }
 
+- (BOOL) readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
+{
+    
+    code  = [[NSString alloc] initWithContentsOfFile:url.path usedEncoding:&codeEncoding error:outError];
+    
+    return (code != nil);
+}
 @end

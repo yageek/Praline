@@ -12,9 +12,6 @@
 
 #import<CocoaLumberjack/DDLog.h>
 
-static int ddLogLevel = LOG_LEVEL_VERBOSE;
-
-
 #define GUTTER_VIEW_WIDTH 30
 
 
@@ -152,5 +149,10 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void) setText:(NSString*) text
 {
     _textView.string = text;
+}
+- (void) setTextStorage:(NSTextStorage*) storage
+{
+    
+    _textView.layoutManager.textStorage = storage;
 }
 @end
