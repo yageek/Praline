@@ -58,6 +58,68 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="File" id="qJb-91-QEY">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="File" id="DwS-r7-le1">
+                        <items>
+                            <menuItem title="New" keyEquivalent="n" id="N12-9C-cEh">
+                                <connections>
+                                    <action selector="newDocument:" target="-1" id="jA9-vv-R9C"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Open…" keyEquivalent="o" id="rfD-lQ-yPs">
+                                <connections>
+                                    <action selector="openDocument:" target="-1" id="t9n-KM-aJG"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Open Recent" id="HNJ-bz-gYC">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="WxH-8E-E3U">
+                                    <items>
+                                        <menuItem title="Clear Menu" id="Pf8-c5-n47">
+                                            <connections>
+                                                <action selector="clearRecentDocuments:" target="-1" id="j3d-M2-nL9"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="aXh-On-BWm"/>
+                            <menuItem title="Close" keyEquivalent="w" id="d9s-Ts-n8Y">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="AwF-2w-fn5"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Save" keyEquivalent="s" id="fa1-F5-qKo">
+                                <connections>
+                                    <action selector="saveDocument:" target="-1" id="GZ3-Em-JcH"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Save As…" keyEquivalent="S" id="BKs-ed-4UU">
+                                <connections>
+                                    <action selector="saveDocumentAs:" target="-1" id="gB7-Tu-xyE"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Revert to Saved" id="Ibl-7I-ROr">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="revertDocumentToSaved:" target="-1" id="1Cs-AG-iEi"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="d6N-cB-Kc1"/>
+                            <menuItem title="Page Setup…" keyEquivalent="P" id="GOC-qS-WdR">
+                                <connections>
+                                    <action selector="runPageLayout:" target="-1" id="JXf-z6-sxt"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Print…" keyEquivalent="p" id="cLb-qK-LhY">
+                                <connections>
+                                    <action selector="print:" target="-1" id="MlW-Iq-GzF"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Help" id="491">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="492">

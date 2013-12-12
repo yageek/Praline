@@ -9,5 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface YGDocument : NSDocument
+{
+    NSString * code;
+}
 
 @end

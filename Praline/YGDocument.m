@@ -9,6 +9,12 @@
 #import "YGDocument.h"
 #import "YGSourceCodeWindowController.h"
 
+@interface YGDocument()
+{
+    YGSourceCodeWindowController * _sourceCodeController;
+}
+
+@end
 @implementation YGDocument
 
 - (id)init
@@ -22,8 +28,14 @@
 
 - (void) makeWindowControllers
 {
-    YGSourceCodeWindowController * ctrl = [[YGSourceCodeWindowController alloc] init];
-    [self addWindowController:ctrl];
+   _sourceCodeController = [[YGSourceCodeWindowController alloc] init];
+    [self addWindowController:_sourceCodeController];
+    
+    if(code)
+    {
+        [_sourceCodeController.editorView setText:code];
+    }
+
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
@@ -51,8 +63,9 @@
     // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
     // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
     // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
+    code = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+    
     return YES;
 }
 

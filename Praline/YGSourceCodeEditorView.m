@@ -148,4 +148,9 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     [_gutterView setNeedsDisplay:YES];
 }
+
+- (void) setText:(NSString*) text
+{
+    _textView.string = text;
+}
 @end

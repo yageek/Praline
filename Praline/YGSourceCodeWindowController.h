@@ -15,4 +15,5 @@
 
 -(id) init;
 
+@property(readonly,nonatomic) YGSourceCodeEditorView * editorView;
 @end

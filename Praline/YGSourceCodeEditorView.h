@@ -15,4 +15,5 @@
     YGGutterView * _gutterView;
 }
 
+- (void) setText:(NSString*) text;
 @end
