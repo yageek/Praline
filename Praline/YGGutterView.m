@@ -127,7 +127,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     YGGutterLineMode currentMode, previousMode =YGGutterLineModeNewLine;
     
-    for(numberofLines = 0, index = 0; index < totalGlyphs;numberofLines++)
+    for(numberofLines = 0, index = 0; index < totalGlyphs;)
     {
         NSRect lineRect = [manager lineFragmentRectForGlyphAtIndex:index effectiveRange:&loopRange];
         NSString * line = [code substringWithRange:loopRange];
@@ -146,7 +146,8 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         
         if((previousMode == YGGutterLineModeNewLine && currentMode == YGGutterLineModeWrapping) || (previousMode == YGGutterLineModeNewLine && currentMode == YGGutterLineModeNewLine))
         {
-            gtLine->number = numberofLines +1;
+            numberofLines++;
+            gtLine->number = numberofLines;
         }
         else if((previousMode == YGGutterLineModeWrapping && currentMode == YGGutterLineModeNewLine) || (previousMode == YGGutterLineModeWrapping && currentMode == YGGutterLineModeWrapping))
         {
