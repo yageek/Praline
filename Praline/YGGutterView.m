@@ -69,7 +69,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         
         CGFloat pointSize = [self.textAttributes[NSFontAttributeName] pointSize];
         NSArray * lines = [self getLines];
-        
+        _linesCount = lines.count;
         for(YGGutterLine * line in lines)
         {
             NSRect lineRect = line->lineRect;
@@ -93,17 +93,17 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
                 lineRect.origin.y -= (string.size.height - pointSize)/2;
 
                  [string drawInRect:lineRect];
+                /*
+                [[NSColor redColor] setStroke];
+                NSBezierPath * path = [NSBezierPath bezierPath];
+                [path moveToPoint:NSMakePoint(NSMinX(lineRect), NSMinY(lineRect))];
+                [path lineToPoint:NSMakePoint(NSMaxX(lineRect), NSMinY(lineRect))];
+                [path lineToPoint:NSMakePoint(NSMaxX(lineRect), NSMaxY(lineRect))];
+                [path lineToPoint:NSMakePoint(NSMinX(lineRect), NSMaxY(lineRect))];
                 
-//                [[NSColor redColor] setStroke];
-//                NSBezierPath * path = [NSBezierPath bezierPath];
-//                [path moveToPoint:NSMakePoint(NSMinX(line->lineRect), NSMinY(line->lineRect))];
-//                [path lineToPoint:NSMakePoint(NSMaxX(line->lineRect), NSMinY(line->lineRect))];
-//                [path lineToPoint:NSMakePoint(NSMaxX(line->lineRect), NSMaxY(line->lineRect))];
-//                [path lineToPoint:NSMakePoint(NSMinX(line->lineRect), NSMaxY(line->lineRect))];
-//                
-//                
-//                [path stroke];
-
+                
+                [path stroke];
+*/
             }
         }
     }
@@ -120,18 +120,17 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
     rowHeight = [manager defaultLineHeightForFont:self.textAttributes[NSFontAttributeName]];
     lineSpacing = [[textView defaultParagraphStyle] lineSpacing];
-                                             
+
     if(code.length == 0)
     {
         YGGutterLine * line = [[YGGutterLine alloc] init];
-        line->lineRect = NSMakeRect(0, 0, self.bounds.size.width, rowHeight + lineSpacing);
+        line->lineRect = NSMakeRect(0, 0, self.bounds.size.width, rowHeight);
         line->number = 1;
     
         [linesArray addObject:line];
         return  [linesArray copy];
     }
     
-    CGFloat spacing = rowHeight;
     NSInteger index, numberofLines, totalGlyphs = [manager numberOfGlyphs];
     NSRange loopRange;
     NSInteger iter;
@@ -144,7 +143,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         NSString * line = [code substringWithRange:loopRange];
         
         YGGutterLine * gtLine = [[YGGutterLine alloc] init];
-        gtLine->lineRect = NSMakeRect(0, iter*spacing, self.bounds.size.width, rowHeight + lineSpacing);
+        gtLine->lineRect = NSMakeRect(0, iter*rowHeight, self.bounds.size.width, rowHeight);
         
         if([line rangeOfString:@"\n"].location == NSNotFound)
         {
@@ -175,9 +174,8 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     {
         YGGutterLine * line = [[YGGutterLine alloc] init];
         
-        CGFloat y = iter*spacing;
         
-        line->lineRect = NSMakeRect(0, y, self.bounds.size.width, rowHeight + lineSpacing);
+        line->lineRect = NSMakeRect(0, iter*rowHeight, self.bounds.size.width, rowHeight);
         line->number = numberofLines+1;
         
        [linesArray addObject:line];
@@ -189,4 +187,8 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     return [linesArray copy];
 }
 
+- (NSUInteger) linesCount
+{
+    return _linesCount;
+}
 @end

@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "YGGutterView.h"
-
+#import "YGTextView.h"
 @interface YGSourceCodeEditorView : NSView{
-    NSTextView * _textView;
+    YGTextView * _textView;
     NSScrollView * _textScrollView;
     YGGutterView * _gutterView;
 }

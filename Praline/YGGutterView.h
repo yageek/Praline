@@ -14,6 +14,7 @@
 @public
     NSRect lineRect;
     NSInteger number;
+
 }
 
 @end
@@ -22,10 +23,14 @@
 {
     CGFloat rowHeight;
     CGFloat lineSpacing;
+    NSUInteger _linesCount;
+    
+
 }
 
 - (id) initWithFrame:(NSRect) frame andScrollView:(NSScrollView*) textview;
 
 @property(copy,nonatomic) NSDictionary * textAttributes;
 @property(assign,nonatomic) NSScrollView * textScrollView;
+@property (readonly) NSUInteger linesCount;
 @end
