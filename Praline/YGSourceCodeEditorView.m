@@ -59,6 +59,11 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     [self addSubview:_gutterView];
     [self addSubview:_textScrollView];
     
+    _bottomSplitView = [[NSSplitView alloc] initWithFrame:frame];
+    [_bottomSplitView setVertical:NO];
+    
+    
+    [self addSubview:_bottomSplitView];
     [self initConstraints];
     
     [self registerNotifications];
@@ -69,10 +74,9 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     [_gutterView makeConstraints:^(MASConstraintMaker * make){
         make.width.equalTo(@(GUTTER_VIEW_WIDTH));
-        make.height.equalTo(self.height);
         make.left.equalTo(self.left);
         make.top.equalTo(self.top);
-        make.bottom.equalTo(self.bottom);
+        make.bottom.equalTo(_bottomSplitView.top);
                         
     }];
     
@@ -80,9 +84,17 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         make.left.equalTo(_gutterView.right);
         make.right.equalTo(self.right);
         make.top.equalTo(self.top);
-        make.bottom.equalTo(self.bottom);
+        make.bottom.equalTo(_bottomSplitView.top);
     }];
     
+    [_bottomSplitView makeConstraints:^(MASConstraintMaker * make)
+    {
+        make.left.equalTo(self.left);
+        make.right.equalTo(self.right);
+        make.bottom.equalTo(self.bottom);
+        make.height.equalTo(@20);
+        make.top.equalTo(_textScrollView.bottom);
+    }];
 
 }
 

@@ -13,6 +13,8 @@
     YGTextView * _textView;
     NSScrollView * _textScrollView;
     YGGutterView * _gutterView;
+    
+    NSSplitView * _bottomSplitView;
 }
 
 @property(readonly,nonatomic) NSTextView *textView;
