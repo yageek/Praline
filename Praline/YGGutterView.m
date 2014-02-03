@@ -7,15 +7,12 @@
 //
 
 #import "YGGutterView.h"
-#import <CocoaLumberjack/DDLog.h>
 
 typedef NS_ENUM(NSInteger,YGGutterLineMode)
 {
     YGGutterLineModeNewLine,
     YGGutterLineModeWrapping
 };
-
-static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation YGGutterLine
 
@@ -34,7 +31,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     if(![scrollview.documentView isKindOfClass:[NSTextView class]])
     {
         self = nil;
-        DDLogError(@"Could not Initialize. The provided scrollView should have an NSTextView as document view.");
+        NSLog(@"Could not Initialize. The provided scrollView should have an NSTextView as document view.");
         return self;
     }
     if(self = [super initWithFrame:frame])

@@ -7,12 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <CocoaLumberjack/DDTTYLogger.h>
-#import <CocoaLumberjack/DDLog.h>
+
 int main(int argc, const char * argv[])
 {
-    
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    
     return NSApplicationMain(argc, argv);
 }

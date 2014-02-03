@@ -7,14 +7,16 @@
 //
 
 #import "YGTextView.h"
-
+#import "YGTextCompletionView.h"
 @implementation YGTextView
 {
     NSDictionary * _textAttributes;
+    NSPoint _cursorPoint;
+    NSScrollView *_scrollView;
 }
 
 
-- (id) initWithFrame:(NSRect)frameRect
+- (id) initWithFrame:(NSRect)frameRect andScrollView:(NSScrollView *)scrollView
 {
     if(self = [super initWithFrame:frameRect])
     {
@@ -26,15 +28,20 @@
         
         NSFont * defaultFont =[NSFont fontWithName:@"Menlo Regular" size:13.];
         [self setFont:defaultFont];
+        _scrollView = scrollView;
     }
     return self;
     
 }
+
+- (BOOL) isFlipped
+{
+    return YES;
+}
 /*
 - (void)drawRect:(NSRect)dirtyRect
 {
-	[super drawRect:dirtyRect];
-	
+    [super drawRect:dirtyRect];
     // Drawing code here.
     
     NSLayoutManager * manager = [self layoutManager];
@@ -54,8 +61,26 @@
         [path stroke];
 
     }
-    
-    
+
 }
 */
+
+- (void) complete:(id)sender
+{
+
+    NSLayoutManager * manager = self.layoutManager;
+    _cursorPoint = [manager boundingRectForGlyphRange:self.selectedRange inTextContainer:self.textContainer].origin;
+    _cursorPoint.y += [self.font pointSize] + 5;
+    [self showCompleteViewAtPoint:_cursorPoint];
+   
+    
+
+}
+
+- (void)showCompleteViewAtPoint:(NSPoint) point
+{
+    
+    YGTextCompletionView* completeView = [[YGTextCompletionView alloc] initWithFrame:NSMakeRect(point.x, point.y, 100, 100)];
+       [self addSubview:completeView];
+}
 @end

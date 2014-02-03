@@ -10,11 +10,8 @@
 #define MAS_SHORTHAND
 #import <Masonry/Masonry.h>
 
-#import<CocoaLumberjack/DDLog.h>
-
 #define GUTTER_VIEW_WIDTH 30
 
-static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface YGSourceCodeEditorView ()<NSTextStorageDelegate>
 
@@ -47,7 +44,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     [_textScrollView setHasVerticalScroller:YES];
 
 
-    _textView = [[YGTextView alloc] initWithFrame:frame];
+    _textView = [[YGTextView alloc] initWithFrame:frame andScrollView:_textScrollView];
     _textView.textStorage.delegate = self;
 
     [_textScrollView setDocumentView:_textView];

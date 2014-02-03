@@ -10,4 +10,5 @@
 
 @interface YGTextView : NSTextView
 
+- (id) initWithFrame:(NSRect)frameRect andScrollView:(NSScrollView *) scrollView;
 @end

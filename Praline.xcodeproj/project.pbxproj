@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1ABBF4AB15DD47E8938E06D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98CF4531F9294A449EA11E3D /* libPods.a */; };
+		78017A73189C053000DA4213 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78017A6C189C053000DA4213 /* MainMenu.xib */; };
+		78017A74189C053000DA4213 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 78017A6F189C053000DA4213 /* Credits.rtf */; };
+		78017A75189C053000DA4213 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78017A71189C053000DA4213 /* InfoPlist.strings */; };
 		780DF05F1855DA3A009EDF9F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780DF05E1855DA3A009EDF9F /* Cocoa.framework */; };
 		780DF0691855DA3A009EDF9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 780DF0671855DA3A009EDF9F /* InfoPlist.strings */; };
 		780DF06B1855DA3A009EDF9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF06A1855DA3A009EDF9F /* main.m */; };
@@ -23,6 +26,7 @@
 		780DF09D1855F0DA009EDF9F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 780DF09C1855F0DA009EDF9F /* Podfile */; };
 		780DF0A01855F1EA009EDF9F /* YGSourceCodeEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF09F1855F1EA009EDF9F /* YGSourceCodeEditorView.m */; };
 		780DF0A9185609A4009EDF9F /* YGSourceCodeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 780DF0A8185609A4009EDF9F /* YGSourceCodeWindowController.m */; };
+		782E6A80189FDADE0085F29E /* YGTextCompletionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782E6A7F189FDADE0085F29E /* YGTextCompletionView.m */; };
 		78C02A7E186093DA005DC3E2 /* YGTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C02A7D186093DA005DC3E2 /* YGTextView.m */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +42,9 @@
 
 /* Begin PBXFileReference section */
 		5FF8E3A2D87240F1A0CD76F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		78017A6D189C053000DA4213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
+		78017A70189C053000DA4213 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Credits.rtf; sourceTree = "<group>"; };
+		78017A72189C053000DA4213 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		780DF05B1855DA3A009EDF9F /* Praline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Praline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		780DF05E1855DA3A009EDF9F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		780DF0611855DA3A009EDF9F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -64,6 +71,8 @@
 		780DF09F1855F1EA009EDF9F /* YGSourceCodeEditorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGSourceCodeEditorView.m; sourceTree = "<group>"; };
 		780DF0A7185609A4009EDF9F /* YGSourceCodeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGSourceCodeWindowController.h; sourceTree = "<group>"; };
 		780DF0A8185609A4009EDF9F /* YGSourceCodeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGSourceCodeWindowController.m; sourceTree = "<group>"; };
+		782E6A7E189FDADE0085F29E /* YGTextCompletionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGTextCompletionView.h; sourceTree = "<group>"; };
+		782E6A7F189FDADE0085F29E /* YGTextCompletionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGTextCompletionView.m; sourceTree = "<group>"; };
 		78C02A7C186093DA005DC3E2 /* YGTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGTextView.h; sourceTree = "<group>"; };
 		78C02A7D186093DA005DC3E2 /* YGTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGTextView.m; sourceTree = "<group>"; };
 		98CF4531F9294A449EA11E3D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78017A6B189C053000DA4213 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				78017A6C189C053000DA4213 /* MainMenu.xib */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		78017A6E189C053000DA4213 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				78017A6F189C053000DA4213 /* Credits.rtf */,
+				78017A71189C053000DA4213 /* InfoPlist.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
 		780DF0521855DA3A009EDF9F = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +175,8 @@
 		780DF0651855DA3A009EDF9F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				78017A6B189C053000DA4213 /* Base.lproj */,
+				78017A6E189C053000DA4213 /* en.lproj */,
 				780DF0661855DA3A009EDF9F /* Praline-Info.plist */,
 				780DF0671855DA3A009EDF9F /* InfoPlist.strings */,
 				780DF06A1855DA3A009EDF9F /* main.m */,
@@ -189,14 +217,40 @@
 		780DF0AA18561821009EDF9F /* YGSouceCodeEditor */ = {
 			isa = PBXGroup;
 			children = (
+				782E6A7D189FDAC90085F29E /* CompletionView */,
+				782E6A7B189FDAAF0085F29E /* Gutter */,
+				782E6A7C189FDABF0085F29E /* TextView */,
+			);
+			name = YGSouceCodeEditor;
+			sourceTree = "<group>";
+		};
+		782E6A7B189FDAAF0085F29E /* Gutter */ = {
+			isa = PBXGroup;
+			children = (
 				780DF0961855EEE9009EDF9F /* YGGutterView.h */,
 				780DF0971855EEE9009EDF9F /* YGGutterView.m */,
+			);
+			name = Gutter;
+			sourceTree = "<group>";
+		};
+		782E6A7C189FDABF0085F29E /* TextView */ = {
+			isa = PBXGroup;
+			children = (
 				780DF09E1855F1EA009EDF9F /* YGSourceCodeEditorView.h */,
 				780DF09F1855F1EA009EDF9F /* YGSourceCodeEditorView.m */,
 				78C02A7C186093DA005DC3E2 /* YGTextView.h */,
 				78C02A7D186093DA005DC3E2 /* YGTextView.m */,
 			);
-			name = YGSouceCodeEditor;
+			name = TextView;
+			sourceTree = "<group>";
+		};
+		782E6A7D189FDAC90085F29E /* CompletionView */ = {
+			isa = PBXGroup;
+			children = (
+				782E6A7E189FDADE0085F29E /* YGTextCompletionView.h */,
+				782E6A7F189FDADE0085F29E /* YGTextCompletionView.m */,
+			);
+			name = CompletionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,10 +333,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				780DF09D1855F0DA009EDF9F /* Podfile in Resources */,
+				78017A75189C053000DA4213 /* InfoPlist.strings in Resources */,
 				780DF0691855DA3A009EDF9F /* InfoPlist.strings in Resources */,
 				780DF07A1855DA3B009EDF9F /* Images.xcassets in Resources */,
 				780DF06F1855DA3A009EDF9F /* Credits.rtf in Resources */,
 				780DF0781855DA3B009EDF9F /* MainMenu.xib in Resources */,
+				78017A74189C053000DA4213 /* Credits.rtf in Resources */,
+				78017A73189C053000DA4213 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +394,7 @@
 				780DF0981855EEE9009EDF9F /* YGGutterView.m in Sources */,
 				780DF0A9185609A4009EDF9F /* YGSourceCodeWindowController.m in Sources */,
 				780DF0A01855F1EA009EDF9F /* YGSourceCodeEditorView.m in Sources */,
+				782E6A80189FDADE0085F29E /* YGTextCompletionView.m in Sources */,
 				78C02A7E186093DA005DC3E2 /* YGTextView.m in Sources */,
 				780DF0721855DA3A009EDF9F /* YGDocument.m in Sources */,
 				780DF06B1855DA3A009EDF9F /* main.m in Sources */,
@@ -362,6 +420,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		78017A6C189C053000DA4213 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78017A6D189C053000DA4213 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		78017A6F189C053000DA4213 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78017A70189C053000DA4213 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		78017A71189C053000DA4213 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78017A72189C053000DA4213 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		780DF0671855DA3A009EDF9F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
