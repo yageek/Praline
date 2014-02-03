@@ -71,7 +71,7 @@
     NSLayoutManager * manager = self.layoutManager;
     _cursorPoint = [manager boundingRectForGlyphRange:self.selectedRange inTextContainer:self.textContainer].origin;
     _cursorPoint.y += [self.font pointSize] + 5;
-    [self showCompleteViewAtPoint:_cursorPoint];
+//    [self showCompleteViewAtPoint:_cursorPoint];
    
     
 

@@ -20,6 +20,8 @@
 - (void) makeWindowControllers
 {
    _sourceCodeController = [[YGSourceCodeWindowController alloc] init];
+    
+   
     [self addWindowController:_sourceCodeController];
     
     if(code)

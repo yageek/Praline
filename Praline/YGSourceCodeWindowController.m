@@ -31,6 +31,8 @@
 
     _editorView = [[YGSourceCodeEditorView alloc] initWithFrame:rect];
     _editorView.textView.delegate = self;
+
+     highlighter= [[YGSyntaxHighlighter alloc] initWithTextView:_editorView.textView];
     [textWindow setContentView:_editorView];
     
     return [super initWithWindow:textWindow];
@@ -81,6 +83,9 @@ willChangeSelectionFromCharacterRange:(NSRange)oldSelectedCharRange
     if (newSelectedCharRange.length > 0 ||
         newSelectedCharRange.location != nextInsertionIndex) [self
                                                               stopCompletionTimer];
+    
+    
+    [highlighter highlight];
     return newSelectedCharRange;
 }
 

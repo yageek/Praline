@@ -8,12 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "YGSourceCodeEditorView.h"
+#import "YGSyntaxHighlighter.h"
 
 @interface YGSourceCodeWindowController : NSWindowController{
     YGSourceCodeEditorView * _editorView;
+   YGSyntaxHighlighter * highlighter;
 }
 
--(id) init;
 
 @property(readonly,nonatomic) YGSourceCodeEditorView * editorView;
 @end
