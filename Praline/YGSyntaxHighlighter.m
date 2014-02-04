@@ -8,28 +8,26 @@
 
 #import "YGSyntaxHighlighter.h"
 #import <ParseKit/ParseKit.h>
+@implementation YGSYntaxHighlighterElement
+@end
 
-@interface YGSyntaxHighlighter(){
-    NSTextView *  _textView;
-}
+@interface YGSyntaxHighlighter(){}
 
 @end
 
 @implementation YGSyntaxHighlighter
 
-- (id) initWithTextView:(NSTextView*) textView
-{
-    
-    if(self = [super init])
-    {
-        _textView = textView;
-    }
-    return self;
-}
 
-- (void) highlight
+- (void) highlightString:(NSMutableAttributedString*) attrString;
 {
-    NSString * code = [_textView string];
+    for(YGSYntaxHighlighterElement * element in elements)
+    {
+        [attrString removeAttribute:element->name range:element->range];
+    }
+    
+    
+    NSMutableArray* array = [NSMutableArray array];
+    NSString * code = [attrString string];
     
     PKTokenizer * t = [PKTokenizer tokenizerWithString:code];
     t.commentState.reportsCommentTokens = YES;
@@ -42,8 +40,11 @@
             case PKTokenTypeComment:
             {
                 NSRange range = NSMakeRange(tok.offset, tok.stringValue.length);
-                
-                [_textView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor greenColor] range:range];
+                YGSYntaxHighlighterElement * element = [YGSYntaxHighlighterElement new];
+                element->range = range;
+                element->name = NSForegroundColorAttributeName;
+                element->value = [NSColor greenColor];
+                [array addObject:element];
             }
                 
                 break;
@@ -52,6 +53,12 @@
         }
     
     }
+    elements = [array copy];
+    
+    for(YGSYntaxHighlighterElement * element in elements)
+    {
+        [attrString addAttribute:element->name value:element->value range:element->range];
+    }
+    
 }
-
 @end

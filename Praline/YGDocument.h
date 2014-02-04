@@ -14,4 +14,5 @@
     NSStringEncoding codeEncoding;
 }
 
+@property(nonatomic, getter= isSyntaxHighlighted) BOOL syntaxHighlighted;
 @end

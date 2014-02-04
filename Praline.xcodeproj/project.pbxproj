@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1ABBF4AB15DD47E8938E06D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98CF4531F9294A449EA11E3D /* libPods.a */; };
+		387C1A32EEAD5869A989386F /* YGTextViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C13BF214772C7569AFADB /* YGTextViewDelegate.m */; };
 		78017A73189C053000DA4213 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78017A6C189C053000DA4213 /* MainMenu.xib */; };
 		78017A74189C053000DA4213 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 78017A6F189C053000DA4213 /* Credits.rtf */; };
 		78017A75189C053000DA4213 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78017A71189C053000DA4213 /* InfoPlist.strings */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		387C13BF214772C7569AFADB /* YGTextViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGTextViewDelegate.m; sourceTree = "<group>"; };
+		387C1D754BB14665754214B4 /* YGTextViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGTextViewDelegate.h; sourceTree = "<group>"; };
 		5FF8E3A2D87240F1A0CD76F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		78017A6D189C053000DA4213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
 		78017A70189C053000DA4213 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Credits.rtf; sourceTree = "<group>"; };
@@ -165,7 +168,6 @@
 		780DF0641855DA3A009EDF9F /* Praline */ = {
 			isa = PBXGroup;
 			children = (
-				782E6A81189FF4C60085F29E /* Syntax Highlighting */,
 				780DF0951855EECC009EDF9F /* Views */,
 				780DF0701855DA3A009EDF9F /* YGDocument.h */,
 				780DF0711855DA3A009EDF9F /* YGDocument.m */,
@@ -211,9 +213,9 @@
 		780DF0951855EECC009EDF9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				782E6A81189FF4C60085F29E /* Syntax Highlighting */,
 				780DF0AA18561821009EDF9F /* YGSouceCodeEditor */,
-				780DF0A7185609A4009EDF9F /* YGSourceCodeWindowController.h */,
-				780DF0A8185609A4009EDF9F /* YGSourceCodeWindowController.m */,
+				78B2E2AC18A141510082D247 /* WindowController */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -224,6 +226,8 @@
 				782E6A7D189FDAC90085F29E /* CompletionView */,
 				782E6A7B189FDAAF0085F29E /* Gutter */,
 				782E6A7C189FDABF0085F29E /* TextView */,
+				387C13BF214772C7569AFADB /* YGTextViewDelegate.m */,
+				387C1D754BB14665754214B4 /* YGTextViewDelegate.h */,
 			);
 			name = YGSouceCodeEditor;
 			sourceTree = "<group>";
@@ -264,6 +268,15 @@
 				782E6A83189FF4F80085F29E /* YGSyntaxHighlighter.m */,
 			);
 			name = "Syntax Highlighting";
+			sourceTree = "<group>";
+		};
+		78B2E2AC18A141510082D247 /* WindowController */ = {
+			isa = PBXGroup;
+			children = (
+				780DF0A7185609A4009EDF9F /* YGSourceCodeWindowController.h */,
+				780DF0A8185609A4009EDF9F /* YGSourceCodeWindowController.m */,
+			);
+			name = WindowController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +425,7 @@
 				780DF0721855DA3A009EDF9F /* YGDocument.m in Sources */,
 				782E6A84189FF4F80085F29E /* YGSyntaxHighlighter.m in Sources */,
 				780DF06B1855DA3A009EDF9F /* main.m in Sources */,
+				387C1A32EEAD5869A989386F /* YGTextViewDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

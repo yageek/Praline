@@ -17,18 +17,26 @@
 @end
 @implementation YGDocument
 
+- (id) init
+{
+    if(self = [super init])
+    {
+        _syntaxHighlighted = YES;
+    }
+    return self;
+}
 - (void) makeWindowControllers
 {
    _sourceCodeController = [[YGSourceCodeWindowController alloc] init];
-    
-   
     [self addWindowController:_sourceCodeController];
     
     if(code)
     {
         _sourceCodeController.editorView.textView.string = [code copy];
     }
-
+    NSWindow * window = [_sourceCodeController window];
+    
+    [window makeKeyAndOrderFront:self];
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController

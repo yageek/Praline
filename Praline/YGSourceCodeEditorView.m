@@ -139,6 +139,8 @@
 - (void)textStorageDidProcessEditing:(NSNotification *)notification
 {
     [self updateGutter];
+    
+    [self.syntaxHighlighter highlightString:self.textView.textStorage];
 }
 
 - (void) updateGutter
@@ -151,7 +153,6 @@
 }
 - (void) setTextStorage:(NSTextStorage*) storage
 {
-    
     _textView.layoutManager.textStorage = storage;
 }
 @end

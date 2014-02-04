@@ -8,9 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@interface YGSYntaxHighlighterElement : NSObject
+{
+    @public
+    NSRange range;
+    NSString *name;
+    id value;
+    
+    
+}
+
+@end
+
 @interface YGSyntaxHighlighter : NSObject
+{
+    NSArray * elements;
+}
 
-- (id) initWithTextView:(NSTextView*) textView;
-
-- (void) highlight;
+- (void) highlightString:(NSMutableAttributedString*) attrString;
 @end

@@ -9,14 +9,15 @@
 #import <Cocoa/Cocoa.h>
 #import "YGGutterView.h"
 #import "YGTextView.h"
+#import "YGSyntaxHighlighter.h"
+
 @interface YGSourceCodeEditorView : NSView{
     YGTextView * _textView;
     NSScrollView * _textScrollView;
     YGGutterView * _gutterView;
-    
     NSSplitView * _bottomSplitView;
+
 }
-
 @property(readonly,nonatomic) NSTextView *textView;
-
+@property(strong,nonatomic) YGSyntaxHighlighter * syntaxHighlighter;
 @end

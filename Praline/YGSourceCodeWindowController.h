@@ -12,9 +12,10 @@
 
 @interface YGSourceCodeWindowController : NSWindowController{
     YGSourceCodeEditorView * _editorView;
-   YGSyntaxHighlighter * highlighter;
+    
 }
 
-
 @property(readonly,nonatomic) YGSourceCodeEditorView * editorView;
+
+
 @end
