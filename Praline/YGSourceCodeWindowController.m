@@ -9,7 +9,7 @@
 #import "YGSourceCodeWindowController.h"
 #import "YGDocument.h"
 
-@interface YGSourceCodeWindowController () <NSTextViewDelegate>{
+@interface YGSourceCodeWindowController () {
     unsigned nextInsertionIndex;
     NSTimer *completionTimer;
 }
@@ -34,7 +34,6 @@
     [self setWindow:textWindow];
     
     _editorView = [[YGSourceCodeEditorView alloc] initWithFrame:rect];
-    _editorView.textView.delegate = self;
 
     
     [textWindow setContentView:_editorView];
@@ -49,7 +48,6 @@
     YGDocument * doc = self.document;
     if(doc.isSyntaxHighlighted)
     {
-        
         YGSyntaxHighlighter * highlighter = [[YGSyntaxHighlighter alloc] init];
         _editorView.syntaxHighlighter = highlighter;
     }

@@ -213,6 +213,7 @@
 		780DF0951855EECC009EDF9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7890B83818A26545007854F8 /* Preferences */,
 				782E6A81189FF4C60085F29E /* Syntax Highlighting */,
 				780DF0AA18561821009EDF9F /* YGSouceCodeEditor */,
 				78B2E2AC18A141510082D247 /* WindowController */,
@@ -268,6 +269,13 @@
 				782E6A83189FF4F80085F29E /* YGSyntaxHighlighter.m */,
 			);
 			name = "Syntax Highlighting";
+			sourceTree = "<group>";
+		};
+		7890B83818A26545007854F8 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Preferences;
 			sourceTree = "<group>";
 		};
 		78B2E2AC18A141510082D247 /* WindowController */ = {

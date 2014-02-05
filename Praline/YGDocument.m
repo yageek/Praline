@@ -30,11 +30,7 @@
    _sourceCodeController = [[YGSourceCodeWindowController alloc] init];
     [self addWindowController:_sourceCodeController];
     
-    if(code)
-    {
-        _sourceCodeController.editorView.textView.string = [code copy];
-    }
-    NSWindow * window = [_sourceCodeController window];
+   NSWindow * window = [_sourceCodeController window];
     
     [window makeKeyAndOrderFront:self];
 }
@@ -54,10 +50,7 @@
 {
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
     // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    code = [_sourceCodeController.editorView.textView.string copy];
-
-    [_sourceCodeController.editorView.textView breakUndoCoalescing];
-    
+       
     NSStringEncoding encoding = codeEncoding ?: NSUTF8StringEncoding;
     
     NSData * data = [code dataUsingEncoding:encoding];

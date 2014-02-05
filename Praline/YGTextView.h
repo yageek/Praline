@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface YGTextView : NSTextView
 
+@interface YGTextView : NSTextView
 - (id) initWithFrame:(NSRect)frameRect andScrollView:(NSScrollView *) scrollView;
 @end

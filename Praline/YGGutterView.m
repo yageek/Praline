@@ -8,11 +8,28 @@
 
 #import "YGGutterView.h"
 
+#pragma mark - Preferences Keys
+NSString *const YGGutterViewTextForegroundColor = @"YGGutterViewTextForegroundColor";
+NSString *const YGGutterViewBackgroundColor =@"YGGutterViewBackgroundColor";
+NSString *const YGGutterViewFont = @"YGGutterViewFont";
+
+
+
 typedef NS_ENUM(NSInteger,YGGutterLineMode)
 {
     YGGutterLineModeNewLine,
     YGGutterLineModeWrapping
 };
+#pragma mark - YGGutterLine Internal Object
+@interface YGGutterLine : NSObject
+{
+@public
+    NSRect lineRect;
+    NSInteger number;
+    
+}
+
+@end
 
 @implementation YGGutterLine
 
@@ -23,6 +40,12 @@ typedef NS_ENUM(NSInteger,YGGutterLineMode)
 
 @end
 
+#pragma mark - YGGutterView
+@interface YGGutterView()
+
+@property(assign,nonatomic) NSScrollView * textScrollView;
+
+@end
 @implementation YGGutterView
 
 - (id) initWithFrame:(NSRect) frame andScrollView:(NSScrollView*) scrollview
@@ -38,15 +61,6 @@ typedef NS_ENUM(NSInteger,YGGutterLineMode)
     {
        _textScrollView = scrollview;
 
-        NSFont * font = [scrollview.documentView font];
-        NSMutableParagraphStyle *paragrapStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-        paragrapStyle.alignment = NSCenterTextAlignment;
-       _textAttributes = [@{
-                            NSParagraphStyleAttributeName: [paragrapStyle copy],
-                             NSFontAttributeName: font,
-                             NSForegroundColorAttributeName : [NSColor colorWithRed:0.57 green:0.57 blue:0.57 alpha:1.0]
-                             } copy];
-
     }
     return self;
 }
@@ -59,10 +73,12 @@ typedef NS_ENUM(NSInteger,YGGutterLineMode)
 {
     @autoreleasepool
     {
-        
-        [[NSColor colorWithRed:0.24 green:0.25 blue:0.29 alpha:1.0] setFill];
+        NSColor * backgroundColor = self.attributes[YGGutterViewBackgroundColor] ?:[NSColor colorWithRed:0.24 green:0.25 blue:0.29 alpha:1.0];
+        [backgroundColor setFill];
         NSRectFill(dirtyRect);
-        CGFloat scrollY = [_textScrollView.contentView documentVisibleRect].origin.y;
+        
+        
+        CGFloat scrollY = [self.textScrollView.contentView documentVisibleRect].origin.y;
         
         CGFloat pointSize = [self.textAttributes[NSFontAttributeName] pointSize];
         NSArray * lines = [self getLines];
@@ -70,7 +86,7 @@ typedef NS_ENUM(NSInteger,YGGutterLineMode)
         for(YGGutterLine * line in lines)
         {
             NSRect lineRect = line->lineRect;
-            if(NSIntersectsRect(lineRect, _textScrollView.documentVisibleRect))
+            if(NSIntersectsRect(lineRect, self.textScrollView.documentVisibleRect))
             {
                 
                 NSString * label;
@@ -90,23 +106,35 @@ typedef NS_ENUM(NSInteger,YGGutterLineMode)
                 lineRect.origin.y -= (string.size.height - pointSize)/2;
 
                  [string drawInRect:lineRect];
-                /*
-                [[NSColor redColor] setStroke];
-                NSBezierPath * path = [NSBezierPath bezierPath];
-                [path moveToPoint:NSMakePoint(NSMinX(lineRect), NSMinY(lineRect))];
-                [path lineToPoint:NSMakePoint(NSMaxX(lineRect), NSMinY(lineRect))];
-                [path lineToPoint:NSMakePoint(NSMaxX(lineRect), NSMaxY(lineRect))];
-                [path lineToPoint:NSMakePoint(NSMinX(lineRect), NSMaxY(lineRect))];
-                
-                
-                [path stroke];
-*/
             }
         }
     }
     
 }
 
+- (NSDictionary*) textAttributes
+{
+    NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.alignment = NSCenterTextAlignment;
+    dict[NSParagraphStyleAttributeName] = [paragraphStyle copy];
+    
+    if(!self.attributes)
+    {
+
+        dict[NSFontAttributeName] = [[self.textScrollView documentView] font];
+        dict[NSForegroundColorAttributeName] = [[self.textScrollView documentView] textColor];
+
+    }
+    else
+    {
+        dict[NSFontAttributeName] = self.attributes[YGGutterViewFont];
+        dict[NSForegroundColorAttributeName] = self.attributes[YGGutterViewTextForegroundColor];
+    }
+
+    return [dict copy];
+}
 - (NSArray *) getLines
 {
     NSMutableArray * linesArray = [NSMutableArray array];

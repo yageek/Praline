@@ -11,13 +11,25 @@
 #import "YGTextView.h"
 #import "YGSyntaxHighlighter.h"
 
+extern NSString * const YGSourceCodeEditorViewBackgroundColor;
+extern NSString * const YYGSourceCodeEditorViewStandartTextFontForegroundColor;
+extern NSString * const YGSourceCodeEditorViewCommentTextFontForegroundColor;
+extern NSString * const YGSourceCodeEditorViewFont;
+
 @interface YGSourceCodeEditorView : NSView{
+
     YGTextView * _textView;
     NSScrollView * _textScrollView;
     YGGutterView * _gutterView;
     NSSplitView * _bottomSplitView;
+    
 
 }
-@property(readonly,nonatomic) NSTextView *textView;
+
+- (id) initWithFrame:(NSRect) rect andProperties:(NSDictionary*) dict;
+
+@property(copy,nonatomic) NSDictionary * attributes;
 @property(strong,nonatomic) YGSyntaxHighlighter * syntaxHighlighter;
+
+
 @end

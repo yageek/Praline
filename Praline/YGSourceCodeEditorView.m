@@ -12,6 +12,12 @@
 
 #define GUTTER_VIEW_WIDTH 30
 
+NSString * const YGSourceCodeEditorViewBackgroundColor = @"YGTextViewBackgroundColor";
+NSString * const YGSourceCodeEditorViewStandartTextFontForegroundColor = @"YGTextViewStandartTextFontForegroundColor";
+NSString * const YGSourceCodeEditorViewCommentTextFontForegroundColor = @"YGTextViewCommentTextFontForegroundColor";
+NSString * const YGSourceCodeEditorViewFont = @"YGTextViewFont";
+
+
 
 @interface YGSourceCodeEditorView ()<NSTextStorageDelegate>
 
@@ -21,6 +27,43 @@
 
 @implementation YGSourceCodeEditorView
 
+#pragma mark - Designated Initializers + dealloc
+
+- (id) initWithFrame:(NSRect) rect andProperties:(NSDictionary*) dict
+{
+
+    if(self = [super initWithFrame:rect])
+    {
+        [self createViewWithMainFrame:rect];
+        self.attributes = dict;
+
+    }
+    return self;
+}
+- (id)initWithFrame:(NSRect)frame
+{
+    return [self initWithFrame:frame andProperties:nil];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+#pragma mark - Appearance
+- (void) setAttributes:(NSDictionary *)attributes
+{
+    _attributes = [attributes copy];
+    
+    _textView.backgroundColor = attributes[YGSourceCodeEditorViewBackgroundColor] ?: [NSColor colorWithRed:0.16 green:0.17 blue:0.21 alpha:1.0];
+    
+    _textView.textColor = attributes[YGSourceCodeEditorViewStandartTextFontForegroundColor] ?: [NSColor whiteColor];
+    _textView.insertionPointColor = _textView.textColor;
+    
+    _textView.font = attributes[YGSourceCodeEditorViewFont] ?: [NSFont fontWithName:@"Menlo Regular" size:13.];
+
+    
+}
+#pragma mark - GCD initialization
 + (NSOperationQueue *) globalEditingQueue
 {
     static NSOperationQueue * queue = nil;
@@ -34,24 +77,22 @@
     return queue;
 }
 
+
 #pragma mark - Subviews initialization
+
 - (void) createViewWithMainFrame:(NSRect) frame
 {
-   
-   
+    
     _textScrollView = [[NSScrollView alloc] initWithFrame:frame];
-
     [_textScrollView setHasVerticalScroller:YES];
-
-
+    
+    
     _textView = [[YGTextView alloc] initWithFrame:frame andScrollView:_textScrollView];
     _textView.textStorage.delegate = self;
-
+    
     [_textScrollView setDocumentView:_textView];
     
-    
-    
-     _gutterView = [[YGGutterView alloc] initWithFrame:frame andScrollView:_textScrollView];
+    _gutterView = [[YGGutterView alloc] initWithFrame:frame andScrollView:_textScrollView];
     
     [self addSubview:_gutterView];
     [self addSubview:_textScrollView];
@@ -74,7 +115,7 @@
         make.left.equalTo(self.left);
         make.top.equalTo(self.top);
         make.bottom.equalTo(_bottomSplitView.top);
-                        
+        
     }];
     
     [_textScrollView makeConstraints:^(MASConstraintMaker * make){
@@ -85,40 +126,16 @@
     }];
     
     [_bottomSplitView makeConstraints:^(MASConstraintMaker * make)
-    {
-        make.left.equalTo(self.left);
-        make.right.equalTo(self.right);
-        make.bottom.equalTo(self.bottom);
-        make.height.equalTo(@20);
-        make.top.equalTo(_textScrollView.bottom);
-    }];
-
+     {
+         make.left.equalTo(self.left);
+         make.right.equalTo(self.right);
+         make.bottom.equalTo(self.bottom);
+         make.height.equalTo(@20);
+         make.top.equalTo(_textScrollView.bottom);
+     }];
+    
 }
 
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
-    if(self = [super initWithCoder:aDecoder])
-    {
-        [self createViewWithMainFrame:self.frame];
-    }
-    return self;
-}
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-        
-        [self createViewWithMainFrame:frame];
-        
-    }
-    return self;
-}
-
-- (void) dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 #pragma mark - Notifications
 - (void) registerNotifications
 {
@@ -140,7 +157,7 @@
 {
     [self updateGutter];
     
-    [self.syntaxHighlighter highlightString:self.textView.textStorage];
+//    [self.syntaxHighlighter highlightString:self.textView.textStorage];
 }
 
 - (void) updateGutter

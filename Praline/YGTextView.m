@@ -8,6 +8,8 @@
 
 #import "YGTextView.h"
 #import "YGTextCompletionView.h"
+
+
 @implementation YGTextView
 {
     NSDictionary * _textAttributes;
@@ -21,13 +23,7 @@
     if(self = [super initWithFrame:frameRect])
     {
         self.autoresizingMask = NSViewWidthSizable;
-        self.backgroundColor = [NSColor colorWithRed:0.16 green:0.17 blue:0.21 alpha:1.0];
-        self.textColor = [NSColor whiteColor];
         [self setRichText:NO];
-        [self setInsertionPointColor:[NSColor whiteColor]];
-        
-        NSFont * defaultFont =[NSFont fontWithName:@"Menlo Regular" size:13.];
-        [self setFont:defaultFont];
         _scrollView = scrollView;
     }
     return self;

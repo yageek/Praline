@@ -8,16 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface YGGutterLine : NSObject
-{
-@public
-    NSRect lineRect;
-    NSInteger number;
-
-}
-
-@end
+extern NSString *const YGGutterViewTextForegroundColor;
+extern NSString *const YGGutterViewBackgroundColor;
+extern NSString *const YGGutterViewFont;
 
 @interface YGGutterView : NSView
 {
@@ -30,7 +23,7 @@
 
 - (id) initWithFrame:(NSRect) frame andScrollView:(NSScrollView*) textview;
 
-@property(copy,nonatomic) NSDictionary * textAttributes;
-@property(assign,nonatomic) NSScrollView * textScrollView;
 @property (readonly) NSUInteger linesCount;
+@property(copy,nonatomic) NSDictionary * attributes;
+
 @end
